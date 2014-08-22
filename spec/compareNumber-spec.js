@@ -3,13 +3,14 @@ describe('guessNumber', function () {
     var inputs;
 
     beforeEach(function () {
+
       answer = ['1','2','3','4'];
-      // inputs = ['4','3','1','2'];
+
     });
 
     it ('all correct number and location',function(){
 
-      var inputs = ['1','2','3','4'];
+      inputs = ['1','2','3','4'];
 
       var compareNumber = new CompareNumber();
 
@@ -21,7 +22,7 @@ describe('guessNumber', function () {
 
     it ('none correct number and location',function(){
 
-      var inputs = ['5','6','7','8'];
+      inputs = ['5','6','7','8'];
 
       var compareNumber = new CompareNumber();
 
@@ -33,7 +34,7 @@ describe('guessNumber', function () {
 
     it ('all correct number and none correct location',function(){
 
-      var inputs = ['4','3','2','1'];
+      inputs = ['4','3','2','1'];
 
       var compareNumber = new CompareNumber();
 

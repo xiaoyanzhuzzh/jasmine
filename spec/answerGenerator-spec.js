@@ -51,15 +51,17 @@ expect(result).toBe(true);
       var answerGenerator = new AnswerGenerator();
       var answer1 = answerGenerator.generation();
       var answer2 = answerGenerator.generation();
-      var result = true;
+      var result = false;
       for(var i = 0; i < answer1.length; i++){
         for(var j = 0; j < answer2.length; j++){
           if(answer1[i] !== answer2[j]){
-            result = false;
+            result = true;
             break;
           }
         }
       }
-  expect(result).toBe(true);
+
+      expect(result).toBe(true);
+
     });
 });
