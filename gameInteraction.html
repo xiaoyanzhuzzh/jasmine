@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>GUESS GAME interation </title>
+
+    <script type="text/javascript" src="lib/lodash-2.4.1/lodash.js"></script>
+    <script type="text/javascript" src="lib/lodash-2.4.1/lodash_compat.js"></script>
+
+    <!-- include source files here... -->
+     <script type="text/javascript" src="src/compareNumber.js"></script>
+     <script type="text/javascript" src="src/answerGenerator.js"></script>
+     <script type="text/javascript" src="src/guess.js"></script>
+     <script type="text/javascript" src="src/game.js"></script>
+
+<body>
+
+   <div>这是一款猜字游戏，系统会根据您的输入判断您的输入是否正穷。</div>
+   <div>游戏规则如下：</div>
+     <ul>
+       <li>只有输入的数字和其位置与答案完全一致时，系统给予A；</li>
+       <li>若输入的数字与答案所给相同但位置不一致时，系统会给予B；</li>
+       <li>最后系统会统计A，B的数量以XAXB的形式输出；</li>
+       <li>您需点击start按钮开始本次游戏，输入您所猜数字后点击submit按钮进行提交即可；</li>
+     </ul>
+  <div>请在下面的输入框内输入您的结果，您只有6次机会噢！</div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="gap_ans_1" id="1_1_1"><button type="button">submit</button>
+  <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button">start</button></div>
+
+</body>
+</html>
