@@ -24,7 +24,7 @@ describe('game', function () {
 
     });
 
-    it ('input is ok!',function(){
+    it ('input cannot repeat!',function(){
 
       var inputA = ['2','2','1','3'];
       var inputB = ['5','2','1','3'];
@@ -34,11 +34,11 @@ describe('game', function () {
 
       var game = new Game(guess);
 
-      if(game.judgeInput(inputA)){
+      if(game.judgeInputForm(inputA)){
         resultA = true;
       }
 
-      if(game.judgeInput(inputB)){
+      if(game.judgeInputForm(inputB)){
         resultB = true;
       }
 
@@ -46,6 +46,30 @@ describe('game', function () {
       expect(resultB).toBe(true);
     });
 
+    it ('The length of the input must be four', function(){
+
+      var inputA = ['1','3','6','7'];
+      var inputB = ['1','3','6','7','5'];
+
+      var game = new Game(guess);
+
+      expect(game.judgeInputLength(inputA)).toBe(true);
+
+      expect(game.judgeInputLength(inputB)).toBe(false);
+
+    });
+    it ('The input must be number', function(){
+
+      var inputA = ['1','3','6','7'];
+      var inputB = ['1','3','B','7'];
+
+      var game = new Game(guess);
+
+      expect(game.judgeInputNumber(inputA)).toBe(true);
+
+      expect(game.judgeInputNumber(inputB)).toBe(false);
+
+    });
 
     it ('Game can judge your correct number!',function(){
 
