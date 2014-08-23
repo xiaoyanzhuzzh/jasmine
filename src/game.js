@@ -1,6 +1,7 @@
 function Game(guess){
 
    this.guess = guess;
+   this.answer;
    this.number;
 
 }
@@ -8,6 +9,7 @@ function Game(guess){
 Game.prototype.start = function(){
 
     this.number = 6;
+    this.answer = this.guess.answer;
     return 'Start! Please input your number,you only have 6 times!';
 };
 
@@ -45,10 +47,10 @@ Game.prototype.judgeInputNumber = function(input){
 
 Game.prototype.congratulation = function(input){
 
-    var result = false;
+    var result = 'congratulation!';
     for(var i = 0; i < this.guess.answer.length; i++){
-       if(this.guess.answer[i] === input[i]){
-          result = 'congratulation!';
+       if(this.guess.answer[i] !== input[i]){
+          result =  false;
        }
     }
     return result;
@@ -56,12 +58,23 @@ Game.prototype.congratulation = function(input){
 
 Game.prototype.output = function(input){
 
-    while(this.number != 0){
-    for(var i = 0; i < input.length; i++){
-        if(this.guess.answer[i] !== input[i]){
-           var tips = this.guess.compareNumber.compare(this.guess.answer, input);
-           this.number -= 1;
-        }
-    }
+    var JudgeResult = this.congratulation(input);
+
+    var tipsResult = this.guess.guess(input);
+    var outputResult = '';
+    if(!JudgeResult){
+       this.number --;
+       if(this.number !=0){
+          outputResult += tipsResult +
+          ',please input your next answer,you only have ' + this.number +' times!';
+       }
+       else{
+          outputResult = 'Game Over!';
+       }
+   }
+   else{
+     outputResult = JudgeResult;
   }
+
+   return outputResult;
 };

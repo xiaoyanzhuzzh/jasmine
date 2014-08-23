@@ -1,31 +1,52 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>GUESS GAME interation </title>
 
+    <link href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="lib/lodash-2.4.1/lodash.js"></script>
     <script type="text/javascript" src="lib/lodash-2.4.1/lodash_compat.js"></script>
+
 
     <!-- include source files here... -->
      <script type="text/javascript" src="src/compareNumber.js"></script>
      <script type="text/javascript" src="src/answerGenerator.js"></script>
      <script type="text/javascript" src="src/guess.js"></script>
      <script type="text/javascript" src="src/game.js"></script>
+     <script type="text/javascript" src="src/main.js"></script>
+
 
 <body>
+  <body>
+        <div class="container">
+            <div class="page-header text-center">
+              <h1 class="text-capitalize">猜字游戏</h1>
+            </div>
+            <div>游戏规则如下：</div>
+              <ul>
+                <li>只有输入的数字和其位置与答案完全一致时，系统给予A；</li>
+                <li>若输入的数字与答案所给相同但位置不一致时，系统会给予B；</li>
+                <li>最后系统会统计A，B的数量以xAyB的形式输出；</li>
+                <li>您需点击start按钮开始本次游戏，输入您所猜数字后点击submit按钮进行提交即可；</li>
+              </ul>
 
-   <div>这是一款猜字游戏，系统会根据您的输入判断您的输入是否正穷。</div>
-   <div>游戏规则如下：</div>
-     <ul>
-       <li>只有输入的数字和其位置与答案完全一致时，系统给予A；</li>
-       <li>若输入的数字与答案所给相同但位置不一致时，系统会给予B；</li>
-       <li>最后系统会统计A，B的数量以XAXB的形式输出；</li>
-       <li>您需点击start按钮开始本次游戏，输入您所猜数字后点击submit按钮进行提交即可；</li>
-     </ul>
-  <div>请在下面的输入框内输入您的结果，您只有6次机会噢！</div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="gap_ans_1" id="1_1_1"><button type="button">submit</button>
-  <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button">start</button></div>
+            <div class="text-center">
+              请输入四位不相同的数字
+              <label><input type="text" name="inputBox" id="inputNumber"></label>
+              你还有&nbsp;<span class="text-danger" id="times">6</span>&nbsp;次机会
+            </div>
+            <div class="text-center">
 
+                <label><button class="btn btn-primary btn-sm startButton">开始游戏</button></label>
+                <label><button class="btn btn-primary btn-sm submitButton">提交答案</button></label>
+
+            </div>
+        </div>
 </body>
 </html>

@@ -20,7 +20,9 @@ describe('game', function () {
 
         var game = new Game(guess);
         var result = 'Start! Please input your number,you only have 6 times!';
+
         expect(result).toEqual(game.start());
+        expect(game.number).toBe(6);
 
     });
 
@@ -33,6 +35,7 @@ describe('game', function () {
       var resultB = false;
 
       var game = new Game(guess);
+      var welcomeString = game.start();
 
       if(game.judgeInputForm(inputA)){
         resultA = true;
@@ -52,18 +55,21 @@ describe('game', function () {
       var inputB = ['1','3','6','7','5'];
 
       var game = new Game(guess);
+      var welcomeString = game.start();
 
       expect(game.judgeInputLength(inputA)).toBe(true);
 
       expect(game.judgeInputLength(inputB)).toBe(false);
 
     });
+
     it ('The input must be number', function(){
 
       var inputA = ['1','3','6','7'];
       var inputB = ['1','3','B','7'];
 
       var game = new Game(guess);
+      var welcomeString = game.start();
 
       expect(game.judgeInputNumber(inputA)).toBe(true);
 
@@ -76,7 +82,8 @@ describe('game', function () {
         var input = ['1','3','6','7'];
 
         var game = new Game(guess);
-        var answer = game.guess.answer;
+        var welcomeString = game.start();
+        var answer = game.answer;
 
         for (var i = 0; i < answer.length; i++){
           if(input[i] === answer[i]){
@@ -90,21 +97,13 @@ describe('game', function () {
         var input = ['5','2','1','3'];
 
         var game = new Game(guess);
-        var answer = game.guess.answer;
+        var welcomeString = game.start();
+        var answer = game.answer;
 
-        var result = true;
         var tips;
-
-        for (var i = 0; i < answer.length; i++){
-            if(input[i] !== answer[i]){
-              result = false;
-            }
-        }
-
-        if(!result){
+        if(!game.congratulation(input)){
             tips = game.guess.guess(input);
         }
-        console.log(tips);
         expect(tips).toBe('0A2B');
 
     });
@@ -112,46 +111,27 @@ describe('game', function () {
     it ('Game can judge your false number and inform you your times!',function(){
         var input = ['5','2','1','3'];
 
-        spyOn(compareAnswer,'compare').and.returnValue('0A0B');
+        spyOn(compareNumber,'compare').and.returnValue('0A0B');
+
         var game = new Game(guess);
-        var answer = game.guess.answer;
+        var welcomeString = game.start();
+        var answer = game.answer;
+        var input2 = ['1','3','6','7'];
+        var result6 = game.output(input2);
+      
+        var result5 = game.output(input);
+        var result4 = game.output(input);
+        var result3 = game.output(input);
+        var result2 = game.output(input);
+        var result1 = game.output(input);
+        var result0 = game.output(input);
 
-        var result = true;
-
-        for (var i = 0; i < answer.length; i++){
-            if(input[i] !== answer[i]){
-              result = false;
-            }
-        }
-
-        if(!result){
-            var tips = game.guess.guess(input);
-        }
-        return(tips).toBe('0A0B,please input your next answer,you only have');
+        expect(result6).toBe('congratulation!');
+        expect(result5).toBe('0A0B,please input your next answer,you only have 5 times!');
+        expect(result4).toBe('0A0B,please input your next answer,you only have 4 times!');
+        expect(result1).toBe('0A0B,please input your next answer,you only have 1 times!');
+        expect(result0).toBe('Game Over!');
 
     });
-
-    // it ('Game only provide you 6 times!',function(){
-    //     var input = ['5','2','1','3'];
-    //
-    //     var game = new Game(guess);
-    //     var answer = game.guess.answer;
-    //
-    //     var result = true;
-    //
-    //     for (var i = 0; i < answer.length; i++){
-    //         if(input[i] !== answer[i]){
-    //           result = false;
-    //         }
-    //     }
-    //
-    //     if(!result){
-    //         var tips = game.guess.guess(input);
-    //     }
-    //     return(tips).toBe('0A0B');
-    //
-    // });
-    //
-
 
   });
